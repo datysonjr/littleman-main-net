@@ -106,6 +106,15 @@ export default function Home() {
               >
                 Tokenomics
               </button>
+              <a
+                href="http://Comic.little-man.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-semibold text-muted-foreground hover:text-primary transition-colors"
+                data-testid="nav-comics"
+              >
+                Comics
+              </a>
               <button 
                 onClick={() => smoothScroll('community')}
                 className="font-semibold text-muted-foreground hover:text-primary transition-colors"
