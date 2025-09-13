@@ -295,6 +295,125 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tokenomics Section */}
+      <section id="tokenomics" className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-primary mb-4" data-testid="tokenomics-title">$MNM TOKENOMICS</h2>
+            <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto" data-testid="tokenomics-subtitle">
+              Detailed breakdown of Little Man token distribution and allocation
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              
+              {/* Total Supply Card */}
+              <Card className="vintage-border cartoon-shadow bg-card p-8 space-y-6">
+                <div className="text-center">
+                  <div className="text-4xl mb-4" data-testid="supply-emoji">💰</div>
+                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="supply-title">TOTAL SUPPLY</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Total Supply:</span>
+                    <span className="font-black text-primary text-lg" data-testid="total-supply">1,000,000,000 (1B) $MNM</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Burned:</span>
+                    <span className="font-black text-primary text-lg" data-testid="burned-amount">60M+ burned (≈6.4%)</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Wallet Cap:</span>
+                    <span className="font-black text-primary text-lg" data-testid="wallet-cap">Max 5% per address</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Community Card */}
+              <Card className="vintage-border cartoon-shadow bg-card p-8 space-y-6">
+                <div className="text-center">
+                  <div className="text-4xl mb-4" data-testid="community-emoji">👥</div>
+                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="community-tokenomics-title">COMMUNITY</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Allocation:</span>
+                    <span className="font-black text-primary text-lg" data-testid="community-allocation">1%+ supply (10M+)</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Purpose:</span>
+                    <span className="font-medium text-foreground" data-testid="community-purpose">Giveaways, contests, and holder rewards</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Focus:</span>
+                    <span className="font-medium text-foreground" data-testid="community-focus">Fun, engagement, and loyalty rewards</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Development Card */}
+              <Card className="vintage-border cartoon-shadow bg-card p-8 space-y-6">
+                <div className="text-center">
+                  <div className="text-4xl mb-4" data-testid="dev-emoji">🛠</div>
+                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="dev-title">DEVELOPMENT</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Allocation:</span>
+                    <span className="font-black text-primary text-lg" data-testid="dev-allocation">80M $MNM (≈9%)</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Vesting:</span>
+                    <span className="font-medium text-foreground" data-testid="dev-vesting">90-day linear vesting</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Unlock Date:</span>
+                    <span className="font-black text-primary" data-testid="dev-unlock">December 12</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Marketing Card */}
+              <Card className="vintage-border cartoon-shadow bg-card p-8 space-y-6">
+                <div className="text-center">
+                  <div className="text-4xl mb-4" data-testid="marketing-emoji">📢</div>
+                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="marketing-title">MARKETING & COLLABS</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Allocation:</span>
+                    <span className="font-black text-primary text-lg" data-testid="marketing-allocation">2% supply (20M $MNM)</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Purpose:</span>
+                    <span className="font-medium text-foreground" data-testid="marketing-purpose">Marketing, partnerships, and brand collaborations</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Growth Card */}
+              <Card className="vintage-border cartoon-shadow bg-card p-8 space-y-6 md:col-span-2 lg:col-span-2">
+                <div className="text-center">
+                  <div className="text-4xl mb-4" data-testid="growth-emoji">🚀</div>
+                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="growth-title">GROWTH</h3>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Expansion:</span>
+                    <span className="font-medium text-foreground" data-testid="growth-expansion">Creative campaigns and activations on blast.fun</span>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="font-semibold text-muted-foreground">Priority:</span>
+                    <span className="font-black text-primary" data-testid="growth-priority">Community incentives &gt; treasuries</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Community Section */}
       <section id="community" className="py-20 vintage-pattern">
         <div className="container mx-auto px-6">
