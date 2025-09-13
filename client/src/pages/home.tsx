@@ -413,7 +413,7 @@ export default function Home() {
                       <div className="text-sm text-foreground" data-testid="growth-expansion">
                         <strong>Expansion:</strong> Creative campaigns and activations on blast.fun platform.
                       </div>
-                      <div className="bg-accent p-3 rounded-lg border-2 border-primary">
+                      <div className="bg-muted p-3 rounded-lg border-2 border-primary">
                         <div className="font-black text-primary text-center" data-testid="growth-priority">
                           Community Incentives &gt; Treasuries
                         </div>
@@ -437,7 +437,7 @@ export default function Home() {
 
               {/* Bottom Banner */}
               <div className="mt-10 pt-8 border-t-4 border-primary text-center">
-                <div className="bg-accent p-4 rounded-lg">
+                <div className="bg-muted p-4 rounded-lg">
                   <div className="font-black text-primary text-lg mb-2">
                     THE LITTLE MAN PROMISE
                   </div>
