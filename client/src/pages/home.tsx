@@ -422,10 +422,10 @@ export default function Home() {
                   </div>
 
                   {/* Vintage Stats Box */}
-                  <div className="bg-primary text-primary-foreground p-6 rounded-lg vintage-border">
+                  <div className="bg-card border-2 border-primary p-6 rounded-lg">
                     <div className="text-center">
-                      <div className="text-2xl font-black mb-2">OFFICIAL STAMP</div>
-                      <div className="text-sm">
+                      <div className="text-2xl font-black mb-2 text-primary">OFFICIAL STAMP</div>
+                      <div className="text-sm text-foreground">
                         🎭 VINTAGE CARTOON CHARACTER<br/>
                         ⚡ SUI BLOCKCHAIN VERIFIED<br/>
                         💎 COMMUNITY-FIRST APPROACH
