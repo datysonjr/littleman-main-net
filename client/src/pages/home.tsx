@@ -133,7 +133,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center flex-wrap">
                 <Button 
                   asChild
                   className="vintage-button px-8 py-4 font-bold text-lg text-primary hover:bg-accent bg-background"
@@ -142,6 +142,16 @@ export default function Home() {
                   <a href={blastUrl} target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-rocket mr-2"></i>
                     Get $MNM
+                  </a>
+                </Button>
+                <Button 
+                  asChild
+                  className="vintage-button px-8 py-4 font-bold text-lg text-primary hover:bg-accent bg-background"
+                  data-testid="button-comic-series"
+                >
+                  <a href="http://Comic.little-man.org" target="_blank" rel="noopener noreferrer">
+                    <i className="fas fa-book mr-2"></i>
+                    Comic Series
                   </a>
                 </Button>
                 <Button 
