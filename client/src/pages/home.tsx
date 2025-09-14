@@ -107,9 +107,7 @@ export default function Home() {
                 Tokenomics
               </button>
               <a
-                href="http://Comic.little-man.org" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/comic"
                 className="font-semibold text-muted-foreground hover:text-primary transition-colors"
                 data-testid="nav-comics"
               >
@@ -158,7 +156,7 @@ export default function Home() {
                   className="vintage-button px-8 py-4 font-bold text-lg text-primary hover:bg-accent bg-background"
                   data-testid="button-comic-series"
                 >
-                  <a href="http://Comic.little-man.org" target="_blank" rel="noopener noreferrer">
+                  <a href="/comic">
                     <i className="fas fa-book mr-2"></i>
                     Comic Series
                   </a>
