@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import WalletConnect from "@/components/WalletConnect";
 
 export default function Comic() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [hasTokenAccess, setHasTokenAccess] = useState(false);
 
   const comicPages = [
     {
@@ -86,78 +88,98 @@ export default function Comic() {
 
           <div className="max-w-4xl mx-auto">
             {/* Main Comic Display */}
-            <Card className="vintage-border cartoon-shadow bg-card p-6 mb-8">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-black text-primary mb-2" data-testid="current-page-title">
-                  {comicPages[currentPage].title}
-                </h3>
-                <div className="text-sm text-muted-foreground font-medium">
-                  {currentPage === 0 ? 'Cover' : 
-                   currentPage === comicPages.length - 1 ? 'Back Cover' : 
-                   `Content Page ${currentPage} of ${comicPages.length - 2}`}
-                </div>
-              </div>
-
-              {/* Comic Image */}
-              <div className="flex justify-center mb-6">
-                <div className="vintage-border cartoon-shadow bg-background p-4 max-w-full">
-                  <img 
-                    src={comicPages[currentPage].src}
-                    alt={comicPages[currentPage].alt}
-                    className="w-full h-auto max-w-2xl mx-auto"
-                    data-testid="comic-page-image"
-                  />
-                </div>
-              </div>
-
-              {/* Navigation Controls */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <Button 
-                  onClick={prevPage}
-                  disabled={currentPage === 0}
-                  className="vintage-button px-6 py-3 font-bold text-primary hover:bg-accent bg-background disabled:opacity-50"
-                  data-testid="prev-page-button"
-                >
-                  <i className="fas fa-chevron-left mr-2"></i>
-                  Previous
-                </Button>
-
-                {/* Page Thumbnails */}
-                <div className="flex space-x-2 overflow-x-auto">
-                  {comicPages.map((page, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToPage(index)}
-                      className={`w-12 h-16 border-2 rounded transition-all ${
-                        currentPage === index 
-                          ? 'border-primary bg-accent' 
-                          : 'border-border bg-muted hover:border-primary'
-                      }`}
-                      data-testid={`page-thumbnail-${index}`}
-                    >
-                      <img 
-                        src={page.src}
-                        alt={`Page ${index + 1} thumbnail`}
-                        className="w-full h-full object-cover rounded"
-                      />
-                    </button>
-                  ))}
+            {hasTokenAccess ? (
+              <Card className="vintage-border cartoon-shadow bg-card p-6 mb-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-black text-primary mb-2" data-testid="current-page-title">
+                    {comicPages[currentPage].title}
+                  </h3>
+                  <div className="text-sm text-muted-foreground font-medium">
+                    {currentPage === 0 ? 'Cover' : 
+                     currentPage === comicPages.length - 1 ? 'Back Cover' : 
+                     `Content Page ${currentPage} of ${comicPages.length - 2}`}
+                  </div>
                 </div>
 
-                <Button 
-                  onClick={nextPage}
-                  disabled={currentPage === comicPages.length - 1}
-                  className="vintage-button px-6 py-3 font-bold text-primary hover:bg-accent bg-background disabled:opacity-50"
-                  data-testid="next-page-button"
-                >
-                  Next
-                  <i className="fas fa-chevron-right ml-2"></i>
-                </Button>
-              </div>
-            </Card>
+                {/* Comic Image */}
+                <div className="flex justify-center mb-6">
+                  <div className="vintage-border cartoon-shadow bg-background p-4 max-w-full">
+                    <img 
+                      src={comicPages[currentPage].src}
+                      alt={comicPages[currentPage].alt}
+                      className="w-full h-auto max-w-2xl mx-auto"
+                      data-testid="comic-page-image"
+                    />
+                  </div>
+                </div>
 
-            {/* Comic Info */}
+                {/* Navigation Controls */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <Button 
+                    onClick={prevPage}
+                    disabled={currentPage === 0}
+                    className="vintage-button px-6 py-3 font-bold text-primary hover:bg-accent bg-background disabled:opacity-50"
+                    data-testid="prev-page-button"
+                  >
+                    <i className="fas fa-chevron-left mr-2"></i>
+                    Previous
+                  </Button>
+
+                  {/* Page Thumbnails */}
+                  <div className="flex space-x-2 overflow-x-auto">
+                    {comicPages.map((page, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToPage(index)}
+                        className={`w-12 h-16 border-2 rounded transition-all ${
+                          currentPage === index 
+                            ? 'border-primary bg-accent' 
+                            : 'border-border bg-muted hover:border-primary'
+                        }`}
+                        data-testid={`page-thumbnail-${index}`}
+                      >
+                        <img 
+                          src={page.src}
+                          alt={`Page ${index + 1} thumbnail`}
+                          className="w-full h-full object-cover rounded"
+                        />
+                      </button>
+                    ))}
+                  </div>
+
+                  <Button 
+                    onClick={nextPage}
+                    disabled={currentPage === comicPages.length - 1}
+                    className="vintage-button px-6 py-3 font-bold text-primary hover:bg-accent bg-background disabled:opacity-50"
+                    data-testid="next-page-button"
+                  >
+                    Next
+                    <i className="fas fa-chevron-right ml-2"></i>
+                  </Button>
+                </div>
+              </Card>
+            ) : (
+              <Card className="vintage-border cartoon-shadow bg-card p-12 mb-8 text-center">
+                <div className="text-6xl mb-6">🔒</div>
+                <h3 className="text-3xl font-black text-primary mb-4">EXCLUSIVE CONTENT</h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  This comic series is exclusively available to $MNM token holders. Connect your wallet and verify your token ownership to unlock the adventure!
+                </p>
+                <div className="bg-muted p-6 rounded-lg border-2 border-primary mb-6">
+                  <div className="text-2xl font-black text-primary mb-2">THE ADVENTURES OF LITTLE MAN</div>
+                  <div className="text-sm text-muted-foreground">Episode #1 • 5 Pages • Token Gated</div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Connect your SUI wallet above to check your $MNM token balance and gain access.
+                </p>
+              </Card>
+            )}
+
+            {/* Comic Access & Info */}
             <div className="grid md:grid-cols-2 gap-8">
+              {/* Wallet Connection / Token Gating */}
+              <WalletConnect onTokenVerified={setHasTokenAccess} />
+
               <Card className="vintage-border cartoon-shadow bg-card p-8">
                 <div className="text-center">
                   <div className="text-4xl mb-4">🎭</div>
@@ -179,30 +201,12 @@ export default function Comic() {
                       <span className="font-bold text-muted-foreground">Status:</span>
                       <span className="font-black text-primary">Complete</span>
                     </div>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="vintage-border cartoon-shadow bg-card p-8">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">💎</div>
-                  <h3 className="text-2xl font-black text-primary mb-4" data-testid="token-gated-title">TOKEN GATED</h3>
-                  <div className="space-y-4">
-                    <p className="text-sm text-foreground">
-                      This exclusive comic series is available to $MNM token holders as part of our community rewards program.
-                    </p>
-                    <div className="bg-muted p-4 rounded-lg border-2 border-primary">
-                      <div className="font-black text-primary text-center">
-                        Hold $MNM • Read Comics • Join Adventure
-                      </div>
+                    <div className="flex justify-between">
+                      <span className="font-bold text-muted-foreground">Access:</span>
+                      <span className={`font-black ${hasTokenAccess ? 'text-green-600' : 'text-red-600'}`}>
+                        {hasTokenAccess ? 'Granted' : 'Token Required'}
+                      </span>
                     </div>
-                    <Button 
-                      asChild
-                      className="vintage-button w-full py-3 font-bold text-primary hover:bg-accent bg-background"
-                      data-testid="get-mnm-button"
-                    >
-                      <a href="/#tokenomics">Learn About $MNM</a>
-                    </Button>
                   </div>
                 </div>
               </Card>
