@@ -92,7 +92,9 @@ export default function Comic() {
                   {comicPages[currentPage].title}
                 </h3>
                 <div className="text-sm text-muted-foreground font-medium">
-                  Page {currentPage + 1} of {comicPages.length}
+                  {currentPage === 0 ? 'Cover' : 
+                   currentPage === comicPages.length - 1 ? 'Back Cover' : 
+                   `Content Page ${currentPage} of ${comicPages.length - 2}`}
                 </div>
               </div>
 
