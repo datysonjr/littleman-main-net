@@ -9,6 +9,7 @@ const suiClient = new SuiClient({
 });
 
 const MNM_TOKEN_TYPE = "0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM";
+const MINIMUM_MNM_REQUIRED = 10000; // Minimum tokens required for access
 
 interface WalletConnectProps {
   onTokenVerified: (hasTokens: boolean) => void;
@@ -64,7 +65,7 @@ export default function WalletConnect({ onTokenVerified }: WalletConnectProps) {
       const balanceInTokens = totalBalance / Math.pow(10, decimals);
       setTokenBalance(balanceInTokens);
       setVerificationComplete(true);
-      onTokenVerified(balanceInTokens > 0);
+      onTokenVerified(balanceInTokens >= MINIMUM_MNM_REQUIRED);
     } catch (error) {
       console.error('Error verifying token balance:', error);
       setTokenBalance(0);
@@ -98,7 +99,7 @@ export default function WalletConnect({ onTokenVerified }: WalletConnectProps) {
             CONNECT WALLET
           </h3>
           <p className="text-sm text-muted-foreground mb-6">
-            Connect your SUI wallet to verify $MNM token ownership and access the exclusive comic series.
+            Connect your SUI wallet to verify you hold at least {formatBalance(MINIMUM_MNM_REQUIRED)} $MNM tokens and access the exclusive comic series.
           </p>
           <div className="w-full" data-testid="connect-wallet-button">
             <ConnectButton 
@@ -126,7 +127,7 @@ export default function WalletConnect({ onTokenVerified }: WalletConnectProps) {
     <Card className="vintage-border cartoon-shadow bg-card p-8">
       <div className="text-center">
         <div className="text-4xl mb-4">
-          {isVerifying ? '⏳' : tokenBalance > 0 ? '✅' : '❌'}
+          {isVerifying ? '⏳' : tokenBalance >= MINIMUM_MNM_REQUIRED ? '✅' : '❌'}
         </div>
         <h3 className="text-2xl font-black text-primary mb-4" data-testid="wallet-status-title">
           {isVerifying ? 'VERIFYING...' : 'WALLET CONNECTED'}
@@ -153,13 +154,13 @@ export default function WalletConnect({ onTokenVerified }: WalletConnectProps) {
                 </div>
               </div>
               
-              {tokenBalance > 0 ? (
+              {tokenBalance >= MINIMUM_MNM_REQUIRED ? (
                 <div className="bg-green-100 border-2 border-green-500 p-4 rounded-lg">
                   <div className="font-black text-green-800 text-lg">
                     🎉 ACCESS GRANTED!
                   </div>
                   <div className="text-sm text-green-700">
-                    You hold $MNM tokens and can read the exclusive comic series.
+                    You hold enough $MNM tokens ({formatBalance(tokenBalance)} ≥ {formatBalance(MINIMUM_MNM_REQUIRED)}) to access the exclusive comic series.
                   </div>
                 </div>
               ) : (
@@ -168,14 +169,21 @@ export default function WalletConnect({ onTokenVerified }: WalletConnectProps) {
                     🚫 ACCESS DENIED
                   </div>
                   <div className="text-sm text-red-700 mb-3">
-                    You need to hold $MNM tokens to access this exclusive comic series.
+                    You need to hold at least {formatBalance(MINIMUM_MNM_REQUIRED)} $MNM tokens to access this exclusive comic series.
+                    {tokenBalance > 0 && (
+                      <div className="mt-2">
+                        Current balance: {tokenBalance.toLocaleString(undefined, { maximumFractionDigits: 2 })} $MNM
+                        <br />
+                        Need {Math.ceil(Math.max(0, MINIMUM_MNM_REQUIRED - tokenBalance)).toLocaleString()} more tokens.
+                      </div>
+                    )}
                   </div>
                   <Button 
                     asChild
                     className="vintage-button w-full py-2 font-bold text-primary hover:bg-accent bg-background"
                     data-testid="get-tokens-button"
                   >
-                    <a href="/#tokenomics">Get $MNM Tokens</a>
+                    <a href="/#tokenomics">Get More $MNM Tokens</a>
                   </Button>
                 </div>
               )}

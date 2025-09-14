@@ -163,14 +163,14 @@ export default function Comic() {
                 <div className="text-6xl mb-6">🔒</div>
                 <h3 className="text-3xl font-black text-primary mb-4">EXCLUSIVE CONTENT</h3>
                 <p className="text-lg text-muted-foreground mb-6">
-                  This comic series is exclusively available to $MNM token holders. Connect your wallet and verify your token ownership to unlock the adventure!
+                  This comic series is exclusively available to holders of at least 10,000 $MNM tokens. Connect your wallet and verify your token ownership to unlock the adventure!
                 </p>
                 <div className="bg-muted p-6 rounded-lg border-2 border-primary mb-6">
                   <div className="text-2xl font-black text-primary mb-2">THE ADVENTURES OF LITTLE MAN</div>
                   <div className="text-sm text-muted-foreground">Episode #1 • 5 Pages • Token Gated</div>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Connect your SUI wallet above to check your $MNM token balance and gain access.
+                  Connect your SUI wallet above to check if you hold the required 10,000+ $MNM tokens for access.
                 </p>
               </Card>
             )}
@@ -204,7 +204,7 @@ export default function Comic() {
                     <div className="flex justify-between">
                       <span className="font-bold text-muted-foreground">Access:</span>
                       <span className={`font-black ${hasTokenAccess ? 'text-green-600' : 'text-red-600'}`}>
-                        {hasTokenAccess ? 'Granted' : 'Token Required'}
+                        {hasTokenAccess ? 'Granted' : '10,000+ $MNM Required'}
                       </span>
                     </div>
                   </div>
